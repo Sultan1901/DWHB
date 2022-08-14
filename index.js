@@ -8,7 +8,7 @@ app.use(express());
 app.use(cors());
 app.use(morgan());
 app.use(express.json());
-const patientRouter = require('./routers/router/patient')
+const patientRouter = require('./routers/routes/patient')
 app.use(patientRouter)
 const PORT = 5000;
 app.listen(PORT, () => {
