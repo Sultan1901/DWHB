@@ -3,9 +3,10 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
+require("dotenv").config()
 mongoose
   .connect(
-    `mongodb+srv://r0x:012774Ss@cluster0.cxdsd.mongodb.net/?retryWrites=true&w=majority`,
+    process.env.DB,
     options
   )
   .then(
