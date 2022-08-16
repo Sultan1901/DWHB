@@ -3,7 +3,7 @@ const patient = new mongoose.Schema({
   time: { type: Date, default: new Date() },
   name: { type: String, required: true },
   age: { type: Number, required: true },
-  mrn: { type: Number, required: true },
+  mrn: { type: Number, required: true,unique: true},
   diagnosis: { type: String, required: true },
   gender: { type: String, required: true },
   bmi: { type: Number, required: true },
