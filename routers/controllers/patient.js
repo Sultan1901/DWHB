@@ -41,7 +41,9 @@ const getPatientById = (req, res) => {
   patientModel
     .find({ mrn })
     .then((result) => {
-        res.status(200).json(result);
+      if (result.length)
+        {res.status(200).json(result)}
+        else  res.status(400).json(err);
        
     })
     .catch((err) => {
