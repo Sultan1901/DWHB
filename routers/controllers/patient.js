@@ -1,8 +1,19 @@
 const patientModel = require("../../db/models/patient");
 
 const addPatient = (req, res) => {
-  const {age, name, mrn, diagnosis, gender, bmi, kcal, ibw, protein, fluid, adw } =
-    req.body;
+  const {
+    age,
+    name,
+    mrn,
+    diagnosis,
+    gender,
+    bmi,
+    kcal,
+    ibw,
+    protein,
+    fluid,
+    adw,
+  } = req.body;
   const newpatient = new patientModel({
     name,
     age,
@@ -28,9 +39,14 @@ const addPatient = (req, res) => {
 const getPatientById = (req, res) => {
   const { mrn } = req.params;
   patientModel
-    .find({mrn}).populate("mrn")
+    .findOne({ mrn })
     .then((result) => {
-      res.status(200).json(result);
+      if (result) {
+        res.status(200).json(result);
+        console.log(result);
+      } else {
+        res.status(404).json(err);
+      }
     })
     .catch((err) => {
       res.status(400).json(err);
