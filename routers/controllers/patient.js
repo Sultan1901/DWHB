@@ -39,12 +39,10 @@ const addPatient = (req, res) => {
 const getPatientById = (req, res) => {
   const { mrn } = req.params;
   patientModel
-    .findOne({ mrn })
+    .find({ mrn })
     .then((result) => {
-    
         res.status(200).json(result);
-        console.log(result);
-     
+       
     })
     .catch((err) => {
       res.status(400).json(err);
